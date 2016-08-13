@@ -7,25 +7,25 @@
 
 int main(int argc, char** argv) {
 
-  /* Print Version and Exit Information */
-  puts("Lispy Version 0.0.0.0.1");
-  puts("Press Ctrl+c to Exit\n");
+    /* Print Version and Exit Information */
+    puts("Lispy Version 0.0.0.0.1");
+    puts("Press Ctrl+c to Exit\n");
 
-  while (1) {
+    while (1) {
 
-    /* Output our prompt and get user input */
-    char* input = readline("lispy> ");
+        /* Output our prompt and get user input */
+        char* input = readline("lispy> ");
 
-    // Add input to history
-    add_history(input);
+        // Add input to history
+        add_history(input);
 
-    /* Echo input back to user */
-    printf("No you're a %s\n", input);
+        /* Echo input back to user */
+        printf("No you're a %s\n", input);
 
-    // Free retrieved input
-    free(input);
-  }
+        // Free retrieved input
+        free(input);
+    }
 
-  return 0;
+    return 0;
 }
 
