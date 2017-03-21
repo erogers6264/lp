@@ -67,5 +67,6 @@ int main(int argc, char** argv) {
     
   }
   
+  mpc_cleanup(4, Number, Operator, Expr, Lispy);
   return 0;
 }
