@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
   while (1) {
     
     /* Output our prompt & get input*/
-    char* input = readline("lispy> ");
+    char* input = readline("leather> ");
     
     /* Add input to history */
     add_history(input);
