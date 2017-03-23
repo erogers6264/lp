@@ -59,8 +59,17 @@ int main(int argc, char** argv) {
     /* Add input to history */
     add_history(input);
     
-    /* Echo input back to user */
-    printf("OMG I JUST LOVE %s\n", input);
+    /* Attempt to Parse the user Input */
+    mpc_result_t r;
+    if (mpc_parse("<stdin>", input, Lispy, &r)) {
+      /* On Success Print the Abstract Syntax Tree */
+      mpc_ast_print(r.output);
+      mpc_ast_delete(r.output);
+    } else {
+      /* Otherwise Print the Error */
+      mpc_err_print(r.error);
+      mpc_err_delete(r.error);
+    }
     
     /* Free retrieved input */
     free(input);
