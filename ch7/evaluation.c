@@ -11,3 +11,20 @@ char* readline(char* prompt) {
   cpy[strlen(cpy)-1] = '\0'; // Null termination
   return cpy;
 }
+
+void add_history(char* unused) {}
+
+#else
+#include <editline/readline.h>
+#include <editline/history.h>
+#endif
+
+/* Use operator string to see which operation to perform */
+long eval_op(long x, char* op, long y) {
+  if (strcmp(op, "+") == 0) { return x + y; }
+  if (strcmp(op, "-") == 0) { return x - y; }
+  if (strcmp(op, "*") == 0) { return x * y; }
+  if (strcmp(op, "/") == 0) { return x / y; }
+  return 0;
+}
+
