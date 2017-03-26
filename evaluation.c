@@ -27,7 +27,7 @@ long eval_op(long x, char* op, long y) {
   if (strcmp(op, "/") == 0) { return x / y; }
   return 0;
 }
-
+// + (* 8 8) (* 8 8)
 long eval(mpc_ast_t* t) {
   /* This function uses recursion to iterate
      through remaining children*/
@@ -52,6 +52,22 @@ long eval(mpc_ast_t* t) {
   
   return x;
 }
+
+// Write a recursive function to compute the number
+// of leaves of a tree.
+// int count_leaves(mpc_ast_t* t) {
+//   /* This function uses recursion to compute the
+//   number of leaves of a tree. */
+
+//   int leaves = 0;
+//   if (strstr(t->tag, "number")) {
+//     leaves++;
+//   }
+  
+//   if (strstr*)
+
+//   return leaves;
+// }
 
 int main(int argc, char** argv) {
   /* Create some parsers */
