@@ -44,7 +44,7 @@ lval lval_num(long x) {
 lval lval_err(int x) {
   lval v;
   v.type = LVAL_ERR;
-  v.err = ;
+  v.err = x;
   return v;
 }
 
@@ -59,13 +59,13 @@ void lval_print(lval v) {
     case LVAL_ERR:
       /* Check what type of error it is, and print */
       if (v.err == LERR_DIV_ZERO) {
-        printf("Error: Division by zero!")
+        printf("Error: Division by zero!");
       }
       if (v.err == LERR_BAD_OP) {
-        printf("Error: Invalid operator!")
+        printf("Error: Invalid operator!");
       }
       if (v.err == LERR_BAD_NUM) {
-        printf("Error: Invalid number!")
+        printf("Error: Invalid number!");
       }
     break;
   }
