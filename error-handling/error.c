@@ -75,12 +75,24 @@ void lval_print(lval v) {
 void lval_println(lval v) { lval_print(v); putchar('\n'); }
 
 /* Use operator string to see which operation to perform */
-long eval_op(long x, char* op, long y) {
-  if (strcmp(op, "+") == 0) { return x + y; }
-  if (strcmp(op, "-") == 0) { return x - y; }
-  if (strcmp(op, "*") == 0) { return x * y; }
-  if (strcmp(op, "/") == 0) { return x / y; }
-  return 0;
+lval eval_op(lval x, char* op, lval y) {
+  
+  /* If either value is an error return it */
+  if (x.type == LVAL_ERR) { return x; }
+  if (y.type == LVAL_ERR) { return y; }
+  
+  /* Otherwise do maths on the number values */
+  if (strcmp(op, "+") == 0) { return lval_num(x.num + y.num); }
+  if (strcmp(op, "-") == 0) { return lval_num(x.num - y.num); }
+  if (strcmp(op, "*") == 0) { return lval_num(x.num * y.num); }
+  if (strcmp(op, "/") == 0) {
+    /* If second operand is zero return error */
+    return y.num == 0
+      ? lval_err(LERR_DIV_ZERO)
+      : lval_num(x.num / y.num);
+  }
+  
+  return lval_err(LERR_BAD_OP);
 }
 
 // + (* 8 8) (* 8 8)
